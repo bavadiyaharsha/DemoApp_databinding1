@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="login"
+            type="com.example.demoapp_databinding.model.LoginModelView" />
+
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="30dp"
+        tools:context=".MainActivity">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/hint_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@{login.error_email}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.350">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={login.email}"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_pws"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintVertical_bias="0.5"
+            android:hint="@{login.error_pws}"
+            app:layout_constraintTop_toBottomOf="@id/hint_email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_pws"
+                android:text="@={login.pws}"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/login_bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintVertical_bias="1"
+            android:padding="20dp"
+            android:text="@string/bt_title"
+            android:onClick="@{()->login.checkValidation()}"
+            app:layout_constraintTop_toBottomOf="@id/text_pws"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+             />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
